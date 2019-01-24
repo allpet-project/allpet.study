@@ -32,12 +32,7 @@ namespace blockChain.socket
 
             this.Start();
 
-            this.OnConnected += (remotePort) =>
-            {
-                Console.WriteLine("server :succes connect to " + remotePort);
-            };
 
-            Console.WriteLine("server: start watch port："+ip.ToString()+":"+port.ToString());
 
         }
 

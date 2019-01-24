@@ -25,12 +25,6 @@ namespace blockChain.socket
             IPAddress _ip = IPAddress.Parse(ip);
             endPoint = new IPEndPoint(_ip, port);
             _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            this.OnConnected += () =>
-            {
-                Console.WriteLine("client :succes connect to "+_ip.ToString()+":"+port.ToString());
-            };
-
             this.Start();
         }
 
@@ -82,7 +76,6 @@ namespace blockChain.socket
 
         public void SendMsg(string msg)
         {
-            Console.WriteLine("client send:"+msg);
             byte[] buffer = Encoding.ASCII.GetBytes(msg);
             _socket.Send(buffer);
         }
