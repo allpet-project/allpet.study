@@ -17,7 +17,7 @@ namespace akka.study
             var consoleReaderActor = MyActorSystem.ActorOf(Props.Create(() =>
                 new ConsoleReaderActor(consoleWriterActor)));
 
-            consoleReaderActor.Tell("start");
+            consoleReaderActor.Tell(ConsoleReaderActor.StartCommand);
 
             MyActorSystem.WhenTerminated.Wait();
         }
@@ -25,6 +25,9 @@ namespace akka.study
 
     internal class ConsoleReaderActor : UntypedActor
     {
+        public const string StartCommand = "start";
+        public const string ExitCommand = "exit";
+
         private IActorRef consoleWriterActor;
 
         public ConsoleReaderActor(IActorRef consoleWriterActor)
@@ -34,9 +37,57 @@ namespace akka.study
 
         protected override void OnReceive(object message)
         {
-            var read = Console.ReadLine();
-            consoleWriterActor.Tell(read);
-            Self.Tell("continue");
+            if(message.Equals(StartCommand))
+            {
+                DoPrintInstructions();
+            }else if(message is Messages.InputError)
+            {
+                consoleWriterActor.Tell(message);
+            }
+
+            GetAndValidateInput();
+        }
+
+        private void DoPrintInstructions()
+        {
+            Console.WriteLine("Write whatever you want into the console!");
+            Console.WriteLine("Some entries will pass validation, and some won't...\n\n");
+            Console.WriteLine("Type 'exit' to quit this application at any time.\n");
+        }
+        private void GetAndValidateInput()
+        {
+            var message = Console.ReadLine();
+            if (string.IsNullOrEmpty(message))
+            {
+                // signal that the user needs to supply an input, as previously
+                // received input was blank
+                Self.Tell(new Messages.NullInputError("No input received."));
+            }
+            else if (String.Equals(message, ExitCommand, StringComparison.OrdinalIgnoreCase))
+            {
+                // shut down the entire actor system (allows the process to exit)
+                Context.System.Terminate();
+            }
+            else
+            {
+                var valid = IsValid(message);
+                if (valid)
+                {
+                    consoleWriterActor.Tell(new Messages.InputSuccess("Thank you!Message was valid."));
+
+                    // continue reading messages from console
+                    Self.Tell(new Messages.ContinueProcessing());
+                }
+                else
+                {
+                    Self.Tell(new Messages.ValidationError("Invalid: input hadodd number of characters."));
+                }
+            }
+        }
+        private static bool IsValid(string message)
+        {
+            var valid = message.Length % 2 == 0;
+            return valid;
         }
     }
 
@@ -49,19 +100,24 @@ namespace akka.study
 
         protected override void OnReceive(object message)
         {
-            var msg = message as string;
-            if (string.IsNullOrEmpty(msg))
+            if (message is Messages.InputError)
             {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Please provide an input.\n");
-                Console.ResetColor();
-                return;
-            }else
-            {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("typed:"+msg);
-                Console.ResetColor();
+                var msg = message as Messages.InputError;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(msg.Reason);
             }
+            else if (message is Messages.InputSuccess)
+            {
+                var msg = message as Messages.InputSuccess;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(msg.reason);
+            }
+            else
+            {
+                Console.WriteLine(message);
+            }
+
+            Console.ResetColor();
         }
     }
 }
