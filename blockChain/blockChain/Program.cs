@@ -6,14 +6,10 @@ namespace blockChain
     {
         static void Main(string[] args)
         {
-
-
             new Server();
             new client();
-
             while (true) { };
         }
-
     }
 
 
