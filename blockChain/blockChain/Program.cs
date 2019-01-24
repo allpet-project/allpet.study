@@ -10,6 +10,19 @@ namespace blockChain
         {
             timer = initTimer();
             timer.Elapsed += produceBlock;
+            var server = new socket.SocketManager(Config.remoteIP, Config.remoteport);
+
+            var client = new socket.SocketClientManager(Config.remoteIP, Config.remoteport);
+
+            server.OnReceiveMsg += (ip,msg) =>
+            {
+                Console.WriteLine("server receive:" + msg);
+            };
+
+            client.OnConnected += () =>
+            {
+                client.SendMsg("hello!");
+            };
 
             while (true) { };
         }
@@ -26,8 +39,21 @@ namespace blockChain
         {
             var time = DateTime.Now;
             Console.WriteLine("produce block. time:"+time.ToString());
+
         }
 
 
+
+
+    }
+
+
+    public class Config
+    {
+        public static string clientIP = "127.0.0.1";
+        public static int clientport=1234;
+
+        public static string remoteIP= "127.0.0.1";
+        public static int remoteport=4321;
     }
 }
