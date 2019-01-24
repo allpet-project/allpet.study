@@ -1,0 +1,11 @@
+D:\Git\_ABC\allpet.study\blockChain\blockChain\bin\Debug\netcoreapp2.2\blockChain.deps.json
+D:\Git\_ABC\allpet.study\blockChain\blockChain\bin\Debug\netcoreapp2.2\blockChain.runtimeconfig.json
+D:\Git\_ABC\allpet.study\blockChain\blockChain\bin\Debug\netcoreapp2.2\blockChain.runtimeconfig.dev.json
+D:\Git\_ABC\allpet.study\blockChain\blockChain\bin\Debug\netcoreapp2.2\blockChain.dll
+D:\Git\_ABC\allpet.study\blockChain\blockChain\bin\Debug\netcoreapp2.2\blockChain.pdb
+D:\Git\_ABC\allpet.study\blockChain\blockChain\obj\Debug\netcoreapp2.2\blockChain.csprojAssemblyReference.cache
+D:\Git\_ABC\allpet.study\blockChain\blockChain\obj\Debug\netcoreapp2.2\blockChain.csproj.CoreCompileInputs.cache
+D:\Git\_ABC\allpet.study\blockChain\blockChain\obj\Debug\netcoreapp2.2\blockChain.AssemblyInfoInputs.cache
+D:\Git\_ABC\allpet.study\blockChain\blockChain\obj\Debug\netcoreapp2.2\blockChain.AssemblyInfo.cs
+D:\Git\_ABC\allpet.study\blockChain\blockChain\obj\Debug\netcoreapp2.2\blockChain.dll
+D:\Git\_ABC\allpet.study\blockChain\blockChain\obj\Debug\netcoreapp2.2\blockChain.pdb
