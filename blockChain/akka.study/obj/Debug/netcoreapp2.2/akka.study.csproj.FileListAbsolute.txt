@@ -1,0 +1,11 @@
+D:\Git\_ABC\allpet.study\blockChain\akka.study\bin\Debug\netcoreapp2.2\akka.study.deps.json
+D:\Git\_ABC\allpet.study\blockChain\akka.study\bin\Debug\netcoreapp2.2\akka.study.runtimeconfig.json
+D:\Git\_ABC\allpet.study\blockChain\akka.study\bin\Debug\netcoreapp2.2\akka.study.runtimeconfig.dev.json
+D:\Git\_ABC\allpet.study\blockChain\akka.study\bin\Debug\netcoreapp2.2\akka.study.dll
+D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.csprojAssemblyReference.cache
+D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.csproj.CoreCompileInputs.cache
+D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.AssemblyInfoInputs.cache
+D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.AssemblyInfo.cs
+D:\Git\_ABC\allpet.study\blockChain\akka.study\bin\Debug\netcoreapp2.2\akka.study.pdb
+D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.dll
+D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.pdb
