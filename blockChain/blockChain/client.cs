@@ -16,27 +16,50 @@ namespace blockChain
             {
                 Console.WriteLine("client :succes connect to " + Config.remoteIP.ToString() + ":" + Config.remoteIP.ToString());
             };
+            this._client.OnFaildConnect += () =>
+            {
+                Console.WriteLine("client :reconnect to " + Config.remoteIP.ToString() + ":" + Config.remoteIP.ToString());
+                this._client.reconnet();
+            };
             Thread LoopSend = new Thread(RandomSend);
             LoopSend.Start();
+
+            while(true)
+            {
+                Console.WriteLine("client 指令（1=停/发交易，2=账户总额)：");
+                var cmd= Console.ReadLine();
+                switch(cmd)
+                {
+                    case "1":
+                        this.beActive = !this.beActive;
+                        break;
+                    case "2":
+                        Console.WriteLine("账户总额："+testValue);
+                        break;
+                }
+            }
         }
 
         public void sendMessage(string msg)
         {
-            Console.WriteLine("client send:" + msg);
             this._client.SendMsg(msg);
         }
 
-
+        public int testValue = 0;
+        bool beActive = true;
         public void RandomSend()
         {
             var random = new Random();
-            while (true)
+            while(true)
             {
-                int number = random.Next(-10, 10);
-                this.sendMessage(number.ToString());
-                Thread.Sleep(300);
+                if(this._client._isConnected && this.beActive)
+                {
+                    int number = random.Next(-10, 10);
+                    this.sendMessage(number.ToString());
+                    testValue += number;
+                    Thread.Sleep(300);
+                }
             }
-
         }
     }
 }

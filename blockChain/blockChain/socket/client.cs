@@ -28,10 +28,13 @@ namespace blockChain.socket
             this.Start();
         }
 
+        public void reconnet()
+        {
+            _socket.BeginConnect(endPoint, ConnectedCallback, _socket);
+        }
         public void Start()
         {
             _socket.BeginConnect(endPoint, ConnectedCallback, _socket);
-            _isConnected = true;
             Thread socketClient = new Thread(SocketClientReceive);
             socketClient.IsBackground = true;
             socketClient.Start();
@@ -66,6 +69,7 @@ namespace blockChain.socket
             Socket socket = ar.AsyncState as Socket;
             if (socket.Connected)
             {
+                _isConnected = true;
                 if (this.OnConnected != null) OnConnected();
             }
             else

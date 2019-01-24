@@ -31,9 +31,6 @@ namespace blockChain.socket
             _listSocketInfo = new Dictionary<string, SocketInfo>();
 
             this.Start();
-
-
-
         }
 
         public void Start()

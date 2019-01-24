@@ -17,7 +17,6 @@ namespace blockChain
     {
         socket.SocketManager _server;
         int blockcount = -1;
-        string directorypath = "BlockData";
         private List<txInfo> msgBox = new List<txInfo>();
 
 
@@ -45,6 +44,8 @@ namespace blockChain
 
             Timer timer = initTimer();
             timer.Elapsed += produceBlock;
+
+            initDiretory();
         }
 
         Timer initTimer()
@@ -60,7 +61,7 @@ namespace blockChain
         void produceBlock(object sender, ElapsedEventArgs e)
         {
             var time = DateTime.Now;
-            Console.WriteLine("produce block. time:" + time.ToString());
+            //Console.WriteLine("produce block. time:" + time.ToString());
 
             blockcount++;
 
@@ -77,12 +78,10 @@ namespace blockChain
                 txitem.Add("time", new MyJson.JsonNode_ValueString(item.time));
                 txitem.Add("ip", new MyJson.JsonNode_ValueString(item.ip));
             }
-            string fileName = "("+this.blockcount.ToString()+")"+".txt";
-            string filepath= Path.Combine(this.directorypath, fileName);
-            if(!Directory.Exists(this.directorypath))
-            {
-                Directory.CreateDirectory(this.directorypath);
-            }
+            this.msgBox.Clear();
+
+            string fileName =this.blockcount.ToString()+".txt";
+            string filepath= Path.Combine(Config.directorypath, fileName);
             if (!File.Exists(filepath))
             {
                 FileStream fs = new FileStream(filepath, FileMode.Create);
@@ -93,6 +92,24 @@ namespace blockChain
             {
                 writer.WriteLine(block.ToString());
             }
+        }
+
+
+        void initDiretory()
+        {
+            var dir = new DirectoryInfo(Config.directorypath);
+            if(dir.Exists)
+            {
+                var files = dir.GetFiles();
+                for (int i = 0; i < files.Length; i++)
+                {
+                    files[i].Delete();
+                }
+            }else
+            {
+                dir.Create();
+            }
+
         }
     }
 }
