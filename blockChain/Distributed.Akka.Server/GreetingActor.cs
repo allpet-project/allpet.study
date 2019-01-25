@@ -11,23 +11,38 @@ namespace Distributed.Akka.Server
         private int recCount = 0;
         private DateTime startTime;
         private int byteCount = 0;
-        //public void Handle(object message)
-        //{
 
-        //}
-
+        private int msg_byte;
         protected override void OnReceive(object message)
         {
-            if (recCount == 0)
+            if(message is StartComputeMessage)
             {
-                startTime = DateTime.Now;
-            }
-            recCount++;
-            byteCount += (message as byte[]).Length;
-            if (recCount % 25000 == 0)
+                this.recCount = 0;
+                this.startTime = DateTime.Now;
+                this.byteCount = 0;
+                this.msg_byte = (message as StartComputeMessage).byteCount;
+            }else if(message is EndComputeMessage)
             {
-                Console.WriteLine("msgcount: " + recCount + "    byteCount:" + byteCount + "   time:" + (DateTime.Now - startTime).ToString());
+                this.computeSpeed(Sender);
+            }else
+            {
+                recCount++;
+                byteCount += (message as byte[]).Length;
             }
+        }
+
+        private void computeSpeed(IActorRef sender)
+        {
+            TimeSpan time = DateTime.Now - startTime;
+            double mbs = byteCount / (1024.0 * 1024.0 * time.Seconds);
+            var res = new ComputeResultMessage()
+            {
+                count = recCount,
+                speed = mbs,
+                time= time.TotalSeconds
+            };
+            Console.WriteLine("发Msg次数：{0}  msg大小：{1}kb  时间{2}  速率：{3}m/s   ", this.recCount, msg_byte/1024, time.TotalSeconds, mbs);
+            sender.Tell(res);
         }
     }
 }

@@ -5,7 +5,7 @@ using System;
 
 namespace DistributedAkkaClient
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -28,15 +28,18 @@ namespace DistributedAkkaClient
 
             using (var system = ActorSystem.Create("MyClient", config))
             {
-                var greeting = system.ActorSelection("akka.tcp://MyServer@localhost:8081/user/Greeting");
-
-                while (true)
+                while(true)
                 {
-                    Console.WriteLine("开始测试：");
-                    var input = Console.ReadLine();
-                    for (int i = 0; i < 100000; i++)
+                    Console.WriteLine("cmd:");
+                    var cmd = Console.ReadLine();
+                    switch(cmd)
                     {
-                        greeting.Tell(new byte[1024]);
+                        case "1":
+                            IActorRef testtps = system.ActorOf(Props.Create(() => new TestTPS()));
+                            testtps.Tell(new StartComputeMessage());
+                            break;
+                        case "2":
+                            break;
                     }
                 }
             }
