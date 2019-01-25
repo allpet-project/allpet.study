@@ -34,9 +34,9 @@ namespace DistributedAkkaClient
                 {
                     Console.WriteLine("开始测试：");
                     var input = Console.ReadLine();
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < 100000; i++)
                     {
-                        greeting.Tell(new byte[1024*8]);
+                        greeting.Tell(new byte[1024]);
                     }
                 }
             }

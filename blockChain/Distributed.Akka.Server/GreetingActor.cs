@@ -24,7 +24,7 @@ namespace Distributed.Akka.Server
             }
             recCount++;
             byteCount += (message as byte[]).Length;
-            if (recCount % 2000 == 0)
+            if (recCount % 25000 == 0)
             {
                 Console.WriteLine("msgcount: " + recCount + "    byteCount:" + byteCount + "   time:" + (DateTime.Now - startTime).ToString());
             }
