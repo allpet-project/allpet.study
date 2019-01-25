@@ -18,23 +18,15 @@ namespace Distributed.Akka.Server
 
         protected override void OnReceive(object message)
         {
-            if (message is byte[])
+            if (recCount == 0)
             {
-                if (recCount == 0)
-                {
-                    startTime = DateTime.Now;
-                    //Console.WriteLine(startTime.ToString());
-                }
-                recCount++;
-                byteCount += (message as byte[]).Length;
-                if (recCount % 20000 == 0)
-                {
-                    Console.WriteLine("msgcount: " + recCount + "    byteCount:" + byteCount + "   time:" + (DateTime.Now - startTime).ToString());
-                }
+                startTime = DateTime.Now;
             }
-            else
+            recCount++;
+            byteCount += (message as byte[]).Length;
+            if (recCount % 2000 == 0)
             {
-                Console.WriteLine(message);
+                Console.WriteLine("msgcount: " + recCount + "    byteCount:" + byteCount + "   time:" + (DateTime.Now - startTime).ToString());
             }
         }
     }
