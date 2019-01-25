@@ -10,9 +10,9 @@ namespace akka.study
 
         private IActorRef _validationActor;
 
-        public ConsoleReaderActor(IActorRef validationActor)
+        public ConsoleReaderActor()
         {
-            this._validationActor = validationActor;
+            //this._validationActor = validationActor;
         }
 
         protected override void OnReceive(object message)
@@ -42,7 +42,8 @@ namespace akka.study
             }
             else
             {
-                _validationActor.Tell(message);
+                //_validationActor.Tell(message);
+                Context.ActorSelection("akka://MyActorSystem/user/validationActor").Tell(message);
             }
         }
     }

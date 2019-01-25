@@ -8,3 +8,4 @@ D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.stud
 D:\Git\_ABC\allpet.study\blockChain\akka.study\bin\Debug\netcoreapp2.2\akka.study.pdb
 D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.dll
 D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.pdb
+D:\Git\_ABC\allpet.study\blockChain\akka.study\obj\Debug\netcoreapp2.2\akka.study.csprojAssemblyReference.cache
