@@ -1,1 +1,8 @@
 /blockChain/blockChain/bin
+/blockChain/akka.study/bin
+/blockChain/DistributedAkkaClient/obj
+/blockChain/DistributedAkkaClient/bin
+/blockChain/Distributed.Akka.Server/obj
+/blockChain/Distributed.Akka.Server/bin
+/blockChain/Distributed.Akka.Common/obj
+/blockChain/Distributed.Akka.Common/bin

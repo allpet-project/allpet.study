@@ -33,9 +33,16 @@ namespace DistributedAkkaClient
                 while (true)
                 {
                     var input = Console.ReadLine();
-                    if (input.Equals("sayHello"))
+                    if (input.Equals("b"))
                     {
-                        greeting.Tell(new GreetingMessage());
+                        for(int i=0;i<100000;i++)
+                        {
+                            greeting.Tell(new byte[1024]);
+                        }
+                    }
+                    else
+                    {
+                        greeting.Tell(input);
                     }
                 }
             }

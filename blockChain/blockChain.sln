@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blockChain", "blockChain\bl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akka.study", "akka.study\akka.study.csproj", "{AC9722CF-81ED-4DE2-8BDA-BDF17B3D3530}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akka.client", "akka.Test\akka.client.csproj", "{DD4335A6-28B7-4443-A338-AC0ADBC66561}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akka.server", "akka.server\akka.server.csproj", "{8C6AF929-D795-4CAA-B4E2-8666DB9E3E57}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distributed.Akka.Common", "Distributed.Akka.Common\Distributed.Akka.Common.csproj", "{972ED2B4-593F-469B-ACED-E3F0697B40F1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distributed.Akka.Server", "Distributed.Akka.Server\Distributed.Akka.Server.csproj", "{DFDD96BE-BCDF-4D7E-BD91-01476244B582}"
@@ -31,14 +27,6 @@ Global
 		{AC9722CF-81ED-4DE2-8BDA-BDF17B3D3530}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC9722CF-81ED-4DE2-8BDA-BDF17B3D3530}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC9722CF-81ED-4DE2-8BDA-BDF17B3D3530}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD4335A6-28B7-4443-A338-AC0ADBC66561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD4335A6-28B7-4443-A338-AC0ADBC66561}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD4335A6-28B7-4443-A338-AC0ADBC66561}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD4335A6-28B7-4443-A338-AC0ADBC66561}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C6AF929-D795-4CAA-B4E2-8666DB9E3E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C6AF929-D795-4CAA-B4E2-8666DB9E3E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C6AF929-D795-4CAA-B4E2-8666DB9E3E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C6AF929-D795-4CAA-B4E2-8666DB9E3E57}.Release|Any CPU.Build.0 = Release|Any CPU
 		{972ED2B4-593F-469B-ACED-E3F0697B40F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{972ED2B4-593F-469B-ACED-E3F0697B40F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{972ED2B4-593F-469B-ACED-E3F0697B40F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
